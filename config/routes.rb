@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   root "pages#index"
 
   get "about", to: "pages#about"
-  resources :posts, only: [ :show, :index, :create, :new ]
+  resources :posts, only: [ :show, :index, :create, :new, :edit, :update ]
 end
