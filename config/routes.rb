@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  root "posts#index"
+  root "pages#index"
 
   get "about", to: "pages#about"
   # Below we are explicitly exposing the routes we want to use
