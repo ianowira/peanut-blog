@@ -8,13 +8,17 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def create
     @post = Post.new(params.require(:post).permit(:title, :description))
     
-    @post.save
-
-    redirect_to @post
+    if @post.save
+      flash[:notice] = "Post #{@post.title} was created successfully!"
+      redirect_to @post
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 end
