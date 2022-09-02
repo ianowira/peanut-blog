@@ -1,3 +1,4 @@
+<h1>Create a new post</h1>
 
 <% if @post.errors.any? %>
   <ul class="errors">
@@ -24,3 +25,5 @@
   </p>
 
 <% end %> 
+
+<%= link_to "Return to all posts", posts_path %>

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @articles = Post.all
+    @posts = Post.all
   end
 
   def show
@@ -12,8 +12,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    flash[:notice] = "Post updated successfully!"
-
     @post = Post.find(params[:id])
   end
 
@@ -36,5 +34,12 @@ class PostsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    redirect_to posts_path
   end
 end

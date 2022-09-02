@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  root "pages#index"
+  root "posts#index"
 
   get "about", to: "pages#about"
-  resources :posts, only: [ :show, :index, :create, :new, :edit, :update ]
+  # Below we are explicitly exposing the routes we want to use
+  # resources :posts, only: [ :show, :index, :create, :new, :edit, :update, :destroy ]
+
+  # To expose all the RESTful endpionts by default
+  resources :posts
 end
