@@ -1,7 +1,15 @@
-<nav>
-  <ul>
-    <li><%= link_to "Home", root_path %></li>
-    <li><%= link_to "Posts", posts_path %></li>
-    <li><%= link_to "About", about_path %></li>
-  </ul>
-</nav>
+<div class="relative bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+      <div class="flex justify-start lg:w-0 lg:flex-1">
+        <%= link_to "Peanut Blog", root_path %>
+      </div>
+      <div class="space-x-10">
+        <nav>
+          <%= link_to "Posts", posts_path, class: "text-base font-medium text-gray-500 hover:text-gray-900" %>
+          <%= link_to "About", about_path, class: "text-base font-medium text-gray-500 hover:text-gray-900" %>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

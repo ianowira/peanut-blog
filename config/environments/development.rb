@@ -68,5 +68,14 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  config.hotwire_livereload.listen_paths << Rails.root.join("app/assets/builds")
+  config.hotwire_livereload.disable_default_listeners = true
+  config.hotwire_livereload.listen_paths = [
+    Rails.root.join("app/assets/builds"),
+    Rails.root.join("app/assets/stylesheets"),
+    Rails.root.join("app/javascript"),
+    Rails.root.join("app/views")
+  ]
+
+  config.hotwire_livereload.reload_method = :turbo_stream
+
 end
