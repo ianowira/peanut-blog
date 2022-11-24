@@ -1,5 +1,5 @@
 <h1><%= @post.title %></h1>
-<p><%= @post.user.username if @post.user %></p>
+<p>By <%= @post.user.username if @post.user %></p>
 <div class="rte">
   <p><%= @post.description %></p>
 </div>
