@@ -68,6 +68,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
@@ -84,6 +85,8 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    cssbundling-rails (1.1.2)
+      railties (>= 6.0.0)
     debug (1.6.2)
       irb (>= 1.3.6)
       reline (>= 0.3.1)
@@ -105,6 +108,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jsbundling-rails (1.1.1)
+      railties (>= 6.0.0)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -192,10 +197,6 @@ GEM
     sqlite3 (1.5.3-x86_64-linux)
     stimulus-rails (1.1.0)
       railties (>= 6.0.0)
-    tailwindcss-rails (2.0.14-x86_64-darwin)
-      railties (>= 6.0.0)
-    tailwindcss-rails (2.0.14-x86_64-linux)
-      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.3.0)
     turbo-rails (1.3.1)
@@ -226,12 +227,15 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap
   capybara
+  cssbundling-rails (~> 1.1)
   debug
   hotwire-livereload
   importmap-rails
   jbuilder
+  jsbundling-rails (~> 1.1)
   pg
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
@@ -240,7 +244,6 @@ DEPENDENCIES
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
-  tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
   web-console

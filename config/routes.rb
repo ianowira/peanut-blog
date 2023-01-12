@@ -12,4 +12,7 @@ Rails.application.routes.draw do
 
   # To expose all the RESTful endpionts by default
   resources :posts
+
+  get "signup", to: "users#new"
+  resources :users, except: [:new]
 end
