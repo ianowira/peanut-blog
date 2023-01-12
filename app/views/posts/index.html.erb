@@ -2,28 +2,4 @@
   <%= link_to "Create new post", new_post_path, class: "btn btn-primary" %>
 </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th colspan="3" scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @posts.each do |post| %>
-    <tr>
-      <td><%= post.title %> by, <%= post.user.username %></td>
-      <td><%= post.description %></td>
-      <td><%= link_to 'Show', post %></td>
-      <td><%= link_to 'Edit', edit_post_path(post) %></td>
-      <td>
-        <%= button_to "Delete", post, method: :delete, form: { 
-          data: { 
-            turbo_confirm: "Do you really?" 
-            } 
-          }, class: "btn btn-secondary" %>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= render 'posts' %>

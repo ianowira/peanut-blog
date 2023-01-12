@@ -1,7 +1,7 @@
 <%= render 'shared/errors', form: @user %>
 
 <div class="mb-4">
-  <%= form_with(model: @user, local: true) do |f| %>
+  <%= form_with(model: @user, local: true, data: { turbo: false }) do |f| %>
 
     <div class="mb-3">
       <%= f.label :username, class: "form-label" %>
