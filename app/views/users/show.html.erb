@@ -6,4 +6,15 @@
 
 <h3 class="text-center my-4">Posts</h3>
 
+<div class="flickr_pagination">
+  <%= will_paginate @posts, :container => false %>    
+</div>
+
 <%= render 'posts/posts' %>
+
+<div class="flickr_pagination">
+  <%= will_paginate @posts, :container => false %>
+  <div class="page_info">
+    <%= page_entries_info @posts %>
+  </div>
+</div>
