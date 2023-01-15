@@ -1,6 +1,6 @@
 <%= render 'shared/errors', form: @post %>
 
-<%= form_with(model: @post, local: true) do |f| %>
+<%= form_with(model: @post, local: true, data: { turbo: false }) do |f| %>
   <div class="mb-3">
     <%= f.label :title, class: "form-label", for: "title" %>
     <%= f.text_field :title, class: "form-control", id: "title" %>

@@ -1,0 +1,22 @@
+<h1>Login</h1>
+
+<div class="mb-4">
+  <%= form_with(scope: :session, local: true, url: login_path, data: { turbo: false }) do |f| %>
+
+    <div class="mb-3">
+      <%= f.label :email, class: "form-label"  %><br/>
+      <%= f.email_field :email, placeholder: "jane@doe.com", class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :password, class: "form-label" %>
+      <%= f.password_field :password, placeholder: "Enter your passcode", class: "form-control" %>
+    </div>
+
+    <%= f.submit "Login", class: "btn btn-primary btn-lg" %>
+
+  <% end %> 
+</div>
+
+
+<%= link_to "Return home", root_path %>
