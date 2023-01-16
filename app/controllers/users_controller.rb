@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    session[:user_id] = nil
+    session[:user_id] = nil if @user == current_user
     flash[:notice] = "Account and all associated posts successfully deleted"
     redirect_to posts_path
   end
@@ -58,8 +58,8 @@ class UsersController < ApplicationController
   end
 
   def user_restrictions
-    if current_user != @user
-      flash[:alert] = "Sneaky little rattle snake. You cannot edit or update other users"
+    if current_user != @user && !current_user.admin? 
+      flash[:alert] = "Sneaky little rattle snake. You cannot edit or delete your own account"
       redirect_to edit_user_path(current_user)
     end
   end

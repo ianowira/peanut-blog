@@ -5,13 +5,13 @@
 </div>
 
 <div class="mb-3">
-<% if logged_in? && @post.user == current_user %>
+<% if logged_in? && @post.user == current_user || current_user.admin? %>
 <%= link_to "Edit", edit_post_path(@post) %> |
 <% end %>
 <%= link_to "Return to all posts", posts_path %>
 </div>
 
-<% if logged_in? && @post.user == current_user %>
+<% if logged_in? && @post.user == current_user || current_user.admin? %>
 <%= button_to "Delete", @post, method: :delete, form: { 
   data: { 
     turbo_confirm: "Do you really…" 

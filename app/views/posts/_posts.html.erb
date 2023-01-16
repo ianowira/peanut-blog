@@ -12,7 +12,7 @@
       <td><%= post.title %> by, <%= post.user.username %></td>
       <td><%= post.description %></td>
       <td><%= link_to 'Show', post %></td>
-      <% if logged_in? && post.user == current_user %>
+      <% if logged_in? && (post.user == current_user || current_user.admin?) %>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td>
           <%= button_to "Delete", post, method: :delete, form: { 

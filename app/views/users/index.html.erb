@@ -11,6 +11,9 @@
       <th scope="col">Username</th>
       <th scope="col">Number of Posts</th>
       <th colspan="3" scope="col">Link</th>
+      <% if logged_in? && current_user.admin? %>
+        <th colspan="3" scope="col"></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +24,19 @@
         <%= user.username %>
       </td>
       <td><%= pluralize(user.posts.count, "post") %></td>
-      <td><%= link_to "See profile", user %></td>
+      <td>
+        <%= link_to "View profile", user %>
+        <% if logged_in? %>
+          <% if user == current_user %>
+            <%= link_to "Edit profile", edit_user_path(user) %>
+          <% end %>
+        <% end %>
+      </td>
+      <% if current_user.admin? %>
+        <td>
+            <%= button_to "Delete user", user_path(user), form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete, class: "btn btn-danger" %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>
