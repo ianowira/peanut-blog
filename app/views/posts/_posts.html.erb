@@ -12,14 +12,16 @@
       <td><%= post.title %> by, <%= post.user.username %></td>
       <td><%= post.description %></td>
       <td><%= link_to 'Show', post %></td>
-      <td><%= link_to 'Edit', edit_post_path(post) %></td>
-      <td>
-        <%= button_to "Delete", post, method: :delete, form: { 
-          data: { 
-            turbo_confirm: "Do you really?" 
-            } 
-          }, class: "btn btn-secondary" %>
-      </td>
+      <% if logged_in? && post.user == current_user %>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td>
+          <%= button_to "Delete", post, method: :delete, form: { 
+            data: { 
+              turbo_confirm: "Do you really?" 
+              } 
+            }, class: "btn btn-secondary" %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>

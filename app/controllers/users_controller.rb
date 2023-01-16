@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :require_user, except: [:show, :index]
+  before_action :user_restrictions, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -46,5 +48,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_restrictions
+    if current_user != @user
+      flash[:alert] = "Sneaky little rattle snake. You cannot edit or update other users"
+      redirect_to edit_user_path(current_user)
+    end
   end
 end
