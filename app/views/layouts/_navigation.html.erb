@@ -42,9 +42,12 @@
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <li>
-                  <%= link_to "Logout", logout_path, class: "dropdown-item" %>
+                <%= button_to "Delete profile", user_path(current_user), class: "dropdown-item text-danger", form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete %>
                 </li>
               </ul>
+              <li class="nav-item">
+                  <%= link_to "Logout", logout_path, class: "nav-link" %>
+              </li>
             </li>
           <% else %>
             <li class="nav-item">
