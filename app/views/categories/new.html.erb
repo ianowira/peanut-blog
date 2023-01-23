@@ -1,0 +1,19 @@
+<h1>Create a new category</h1>
+
+<%= render 'shared/errors', form: @category %>
+
+<div class="mb-4">
+  <%= form_with(model: @category, local: true, data: { turbo: false }) do |f| %>
+
+    <div class="mb-3">
+      <%= f.label :name, "Category name:", class: "form-label" %>
+      <%= f.text_field :name, placeholder: "Enter a category name", class: "form-control" %>
+    </div>
+
+    <%= f.submit "Create category", class: "btn btn-primary btn-lg" %>
+
+  <% end %> 
+</div>
+
+
+<%= link_to "Return home", root_path %>
