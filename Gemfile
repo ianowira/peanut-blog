@@ -48,6 +48,7 @@ gem "bootsnap", require: false
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'rubocop', require: false
+  gem 'rubocop', require: false
   gem "sqlite3", "~> 1.4"
 
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
