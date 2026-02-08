@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8fafc;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+      h1 {
+        color: #1e293b;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+      p {
+        color: #475569;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      .button {
+        display: inline-block;
+        background-color: #4f46e5;
+        color: #ffffff !important;
+        padding: 12px 24px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 20px;
+      }
+      .button:hover {
+        background-color: #4338ca;
+      }
+      .footer {
+        margin-top: 40px;
+        text-align: center;
+        color: #94a3b8;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to Peanut Blog! 🥜</h1>
+      <p>
+        Hi <%= @user.username %>,
+      </p>
+      <p>
+        Thanks for signing up! We're excited to have you on board. To get started, please confirm your email address by clicking the button below:
+      </p>
+      
+      <p style="text-align: center;">
+        <%= link_to "Confirm Email Address", confirm_email_user_url(@user.confirm_token), class: "button" %>
+      </p>
+      
+      <p>
+        If you didn't create an account with us, you can safely ignore this email.
+      </p>
+      
+      <div class="footer">
+        &copy; <%= Time.now.year %> Peanut Blog. All rights reserved.
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-require "active_support/core_ext/integer/time"
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -19,13 +19,13 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  if Rails.root.join("tmp/caching-dev.txt").exist?
+  if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      "Cache-Control" => "public, max-age=#{2.days.to_i}"
+      'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false
@@ -37,7 +37,10 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   config.action_mailer.perform_caching = false
 
@@ -70,12 +73,11 @@ Rails.application.configure do
 
   config.hotwire_livereload.disable_default_listeners = true
   config.hotwire_livereload.listen_paths = [
-    Rails.root.join("app/assets/builds"),
-    Rails.root.join("app/assets/stylesheets"),
-    Rails.root.join("app/javascript"),
-    Rails.root.join("app/views")
+    Rails.root.join('app/assets/builds'),
+    Rails.root.join('app/assets/stylesheets'),
+    Rails.root.join('app/javascript'),
+    Rails.root.join('app/views')
   ]
 
   config.hotwire_livereload.reload_method = :turbo_stream
-
 end

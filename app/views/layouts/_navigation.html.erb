@@ -1,80 +1,78 @@
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <%= link_to "Peanut Blog", root_path, class: "navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg fixed-top glass-header">
+  <div class="container">
+    <%= link_to "Peanut Blog", root_path, class: "navbar-brand fw-bold text-primary" %>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="d-flex">
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <%= link_to "Bloggers", users_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Posts
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Bloggers", users_path, class: "nav-link px-3" %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Posts
+          </a>
+          <ul class="dropdown-menu border-0 shadow-sm rounded-3">
+            <li><%= link_to "View all posts", posts_path, class: "dropdown-item my-1" %></li>
+            <% if logged_in? %>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <%= link_to "Create new post", new_post_path, class: "dropdown-item my-1" %>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <ul class="dropdown-menu border-0 shadow-sm rounded-3">
+            <li><%= link_to "View Categories", categories_path, class: "dropdown-item my-1" %></li>
+            <% if logged_in? && current_user.admin? %>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <%= link_to "Create a new category", new_category_path, class: "dropdown-item my-1" %>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "About", about_path, class: "nav-link px-3" %>
+        </li>
+        <% if logged_in? %>
+          <li class="nav-item dropdown ms-lg-3">
+            <a class="nav-link dropdown-toggle btn btn-light rounded-pill px-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= current_user.username %> <%= "(Admin)" if current_user.admin? %>
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#"><%= link_to "View all posts", posts_path, class: "dropdown-item" %></a></li>
-              <% if logged_in? %>
+            <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm rounded-3">
+              <li>
+                <%= link_to "See profile", user_path(current_user), class: "dropdown-item my-1" %>
+              </li>
+              <li>
+                <%= link_to "Edit profile", edit_user_path(current_user), class: "dropdown-item my-1" %>
+              </li>
               <li><hr class="dropdown-divider"></li>
               <li>
-                <%= link_to "Create new post", new_post_path, class: "dropdown-item" %>
+              <%= button_to "Log out", logout_path, class: "dropdown-item text-danger my-1", method: :delete %>
               </li>
-              <% end %>
+              <li>
+              <%= button_to "Delete profile", user_path(current_user), class: "dropdown-item text-danger my-1", form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete %>
+              </li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Categories
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#"><%= link_to "View Categories", categories_path, class: "dropdown-item" %></a></li>
-              <% if logged_in? && current_user.admin? %>
-              <li><hr class="dropdown-divider"></li>
-              <li>
-                <%= link_to "Create a new category", new_category_path, class: "dropdown-item" %>
-              </li>
-              <% end %>
-            </ul>
+        <% else %>
+          <li class="nav-item ms-lg-3">
+            <%= link_to "Log in", login_path, class: "btn btn-outline-primary rounded-pill px-4 me-2" %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "About", about_path, class: "nav-link" %>
+            <%= link_to "Sign up", signup_path, class: "btn btn-primary rounded-pill px-4" %>
           </li>
-          <% if logged_in? %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <%= current_user.username %> <%= "(Admin)" if current_user.admin? %>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <%= link_to "See profile", user_path(current_user), class: "dropdown-item" %>
-                </li>
-                <li>
-                  <%= link_to "Edit", edit_user_path(current_user), class: "dropdown-item" %>
-                </li>
-                <li><hr class="dropdown-divider"></li>
-                <li>
-                <%= button_to "Delete profile", user_path(current_user), class: "dropdown-item text-danger", form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete %>
-                </li>
-              </ul>
-              <li class="nav-item">
-                  <%= link_to "Logout", logout_path, class: "nav-link" %>
-              </li>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "Login", login_path, class: "nav-link" %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to "Sign up", signup_path, class: "nav-link" %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>

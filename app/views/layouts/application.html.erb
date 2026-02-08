@@ -1,24 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="h-100">
   <head>
     <title>Peanut Blog</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <main id="Main">
-      <%= render "layouts/navigation" %>
+  <body class="d-flex flex-column h-100 bg-light">
+    <%= render "layouts/navigation" %>
 
+    <main class="flex-shrink-0 py-4">
       <div class="container">
         <%= render "layouts/messages" %>
         <%= yield %>
       </div>
-    
     </main>
+
+    <footer class="footer mt-auto py-3 bg-white border-top">
+      <div class="container text-center text-muted">
+        <small>&copy; <%= Time.now.year %> Peanut Blog. All rights reserved.</small>
+      </div>
+    </footer>
   </body>
 </html>

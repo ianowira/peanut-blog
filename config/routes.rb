@@ -4,17 +4,21 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  root "pages#index"
+  root 'pages#index'
 
-  get "about", to: "pages#about"
+  get 'about', to: 'pages#about'
   # Below we are explicitly exposing the routes we want to use
   # resources :posts, only: [ :show, :index, :create, :new, :edit, :update, :destroy ]
 
   # To expose all the RESTful endpionts by default
   resources :posts
 
-  get "signup", to: "users#new"
-  resources :users, except: [:new]
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new] do
+    member do
+      get :confirm_email
+    end
+  end
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
