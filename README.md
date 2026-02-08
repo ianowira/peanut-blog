@@ -100,8 +100,11 @@ The application uses `Procfile.dev` to manage multiple processes:
 # Install foreman if you haven't already
 gem install foreman
 
-# Start all services (Rails server, CSS watch, JS watch)
+# Option 1: Use the provided dev script (wrapper around foreman)
 bin/dev
+
+# Option 2: Run foreman directly
+foreman start -f Procfile.dev
 ```
 
 This will start:
