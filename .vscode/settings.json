@@ -1,0 +1,6 @@
+{
+    "rubyLsp.rubyVersionManager": {
+        "identifier": "mise",
+        "miseExecutablePath": "/usr/local/bin/mise"
+    }
+}
